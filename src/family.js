@@ -58,10 +58,16 @@ class Family {
 		const father = mother ? this.family[mother].husband : undefined;
 		return father ? this.getBrothersOf(father) : [];
 	}
+
 	getPaternalAuntOf(name) {
 		const mother = this.family[name].mother;
 		const father = mother ? this.family[mother].husband : undefined;
 		return father ? this.getSistersOf(father) : [];
+	}
+
+	getMaternalUncleOf(name) {
+		const mother = this.family[name].mother;
+		return mother ? this.getBrothersOf(mother) : [];
 	}
 }
 

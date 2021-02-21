@@ -20,8 +20,8 @@ class Family {
 	}
 
 	getChildren(motherName) {
-		const mother = this.family[motherName];
-		if (!mother || mother.gender === "Male") {
+		const mother = this.getMother(motherName);
+		if (!mother) {
 			return "PERSON_NOT_FOUND";
 		}
 		return [...mother.children];

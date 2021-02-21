@@ -52,6 +52,12 @@ class Family {
 			(sibling) => this.family[sibling].gender === "Female"
 		);
 	}
+
+	getPaternalUncleOf(name) {
+		const mother = this.family[name].mother;
+		const father = mother ? this.family[mother].husband : undefined;
+		return father ? this.getBrothersOf(father) : [];
+	}
 }
 
 module.exports = { Family };

@@ -39,12 +39,6 @@ describe("#Family", () => {
 			assert.deepStrictEqual(actualChildren, expectedChildren);
 		});
 
-		it("Should return null when parent name doesn't exists in family", () => {
-			const actualChildren = family.getChildrenOf("NotParent");
-			const expectedChildren = null;
-			assert.deepStrictEqual(actualChildren, expectedChildren);
-		});
-
 		it("Should return empty list when parent has no wife", () => {
 			const actualChildren = family.getChildrenOf("Ish");
 			const expectedChildren = [];

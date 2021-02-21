@@ -21,8 +21,6 @@ class Family {
 
 	getChildrenOf(parentName) {
 		const parent = this.family[parentName];
-		if (!parent) return null;
-
 		const motherName = parent.gender === "Female" ? parentName : parent.wife;
 		return motherName ? this.family[motherName].children : [];
 	}

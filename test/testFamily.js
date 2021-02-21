@@ -75,4 +75,56 @@ describe("#Family", () => {
 			assert.deepStrictEqual(actualMother, expectedMother);
 		});
 	});
+
+	describe("getSonOf", () => {
+		it("Should return list if father and children are present in family", () => {
+			const actualSon = family.getSonOf("Shan");
+			const expectedSon = ["Chit", "Ish", "Vich", "Aras"];
+			assert.deepStrictEqual(actualSon, expectedSon);
+		});
+
+		it("Should return list if mother and children are present in family", () => {
+			const actualSon = family.getSonOf("Shan");
+			const expectedSon = ["Chit", "Ish", "Vich", "Aras"];
+			assert.deepStrictEqual(actualSon, expectedSon);
+		});
+
+		it("Should return 'NONE' if parent has no son", () => {
+			const actualSon = family.getSonOf("Ish");
+			const expectedSon = "NONE";
+			assert.deepStrictEqual(actualSon, expectedSon);
+		});
+
+		it("Should return 'PERSON_NOT_FOUND' if parent doesn't exists in family", () => {
+			const actualSon = family.getSonOf("NotParent");
+			const expectedSon = "PERSON_NOT_FOUND";
+			assert.deepStrictEqual(actualSon, expectedSon);
+		});
+	});
+
+	describe("getDaughterOf", () => {
+		it("Should return list if father and children are present in family", () => {
+			const actualDaughter = family.getDaughterOf("Shan");
+			const expectedDaughter = ["Satya"];
+			assert.deepStrictEqual(actualDaughter, expectedDaughter);
+		});
+
+		it("Should return list if mother and children are present in family", () => {
+			const actualDaughter = family.getDaughterOf("Shan");
+			const expectedDaughter = ["Satya"];
+			assert.deepStrictEqual(actualDaughter, expectedDaughter);
+		});
+
+		it("Should return 'NONE' if parent has no Daughter", () => {
+			const actualDaughter = family.getDaughterOf("Ish");
+			const expectedDaughter = "NONE";
+			assert.deepStrictEqual(actualDaughter, expectedDaughter);
+		});
+
+		it("Should return 'PERSON_NOT_FOUND' if parent doesn't exists in family", () => {
+			const actualDaughter = family.getDaughterOf("NotParent");
+			const expectedDaughter = "PERSON_NOT_FOUND";
+			assert.deepStrictEqual(actualDaughter, expectedDaughter);
+		});
+	});
 });

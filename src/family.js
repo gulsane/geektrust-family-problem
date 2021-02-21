@@ -40,6 +40,18 @@ class Family {
 		const children = motherName ? this.family[motherName].children : [];
 		return children.filter((child) => child !== name);
 	}
+
+	getBrothersOf(name) {
+		const siblings = this.getSiblingsOf(name);
+		return siblings.filter((sibling) => this.family[sibling].gender === "Male");
+	}
+
+	getSistersOf(name) {
+		const siblings = this.getSiblingsOf(name);
+		return siblings.filter(
+			(sibling) => this.family[sibling].gender === "Female"
+		);
+	}
 }
 
 module.exports = { Family };

@@ -58,6 +58,11 @@ class Family {
 		const father = mother ? this.family[mother].husband : undefined;
 		return father ? this.getBrothersOf(father) : [];
 	}
+	getPaternalAuntOf(name) {
+		const mother = this.family[name].mother;
+		const father = mother ? this.family[mother].husband : undefined;
+		return father ? this.getSistersOf(father) : [];
+	}
 }
 
 module.exports = { Family };

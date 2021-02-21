@@ -129,21 +129,15 @@ describe("#Family", () => {
 	});
 
 	describe("getSiblingOf", () => {
-		it("Should return [NONE] when there is no mother of person", () => {
+		it("Should return empty list when there is no mother of person", () => {
 			const actualSibling = family.getSiblingOf("Shan");
-			const expectedSibling = ["NONE"];
+			const expectedSibling = [];
 			assert.deepStrictEqual(actualSibling, expectedSibling);
 		});
 
-		it("Should return [NONE] the child is the only child of mother", () => {
+		it("Should return empty list when the child is the only child of mother", () => {
 			const actualSibling = family.getSiblingOf("Yodhan");
-			const expectedSibling = ["NONE"];
-			assert.deepStrictEqual(actualSibling, expectedSibling);
-		});
-
-		it("Should return 'PERSON_NOT_FOUND' when person is not present in family", () => {
-			const actualSibling = family.getSiblingOf("Someone");
-			const expectedSibling = "PERSON_NOT_FOUND";
+			const expectedSibling = [];
 			assert.deepStrictEqual(actualSibling, expectedSibling);
 		});
 

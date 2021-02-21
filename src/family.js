@@ -50,13 +50,9 @@ class Family {
 	}
 
 	getSiblingOf(name) {
-		if (!this.doesMemberExists(name)) return "PERSON_NOT_FOUND";
-
 		const motherName = this.family[name].mother;
 		const children = motherName ? this.family[motherName].children : [];
-		const siblings = children.filter((child) => child !== name);
-
-		return siblings[0] ? siblings : ["NONE"];
+		return children.filter((child) => child !== name);
 	}
 }
 

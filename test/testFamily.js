@@ -39,4 +39,27 @@ describe("#Family", () => {
 			assert.deepStrictEqual(actualChildren, expectedChildren);
 		});
 	});
+	describe("getMother", () => {
+		it("Should return mother when mother exists in family", () => {
+			const actualMother = family.getMother("Anga");
+			const expectedMother = {
+				gender: "Female",
+				husband: "Shan",
+				children: ["Chit", "Ish", "Vich", "Aras", "Satya"],
+			};
+			assert.deepStrictEqual(actualMother, expectedMother);
+		});
+
+		it("Should return null when mother doesn't exists in family", () => {
+			const actualMother = family.getMother("NotMother");
+			const expectedMother = null;
+			assert.deepStrictEqual(actualMother, expectedMother);
+		});
+
+		it("Should return null when member exists but not a female", () => {
+			const actualMother = family.getMother("Shan");
+			const expectedMother = null;
+			assert.deepStrictEqual(actualMother, expectedMother);
+		});
+	});
 });

@@ -11,9 +11,17 @@ class Family {
 		return this.family[name] !== undefined;
 	}
 
+	getMother(motherName) {
+		const mother = this.family[motherName];
+		if (!mother || mother.gender === "Male") {
+			return null;
+		}
+		return { ...mother };
+	}
+
 	getChildren(motherName) {
 		const mother = this.family[motherName];
-		if (!mother || mother.gender === "male") {
+		if (!mother || mother.gender === "Male") {
 			return "PERSON_NOT_FOUND";
 		}
 		return [...mother.children];

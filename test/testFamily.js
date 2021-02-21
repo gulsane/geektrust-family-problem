@@ -229,4 +229,24 @@ describe("#Family", () => {
 			assert.deepStrictEqual(actualPaternalAunt, expectedPaternalAunt);
 		});
 	});
+
+	describe("getMaternalAuntOf", () => {
+		it("Should return empty list when there is no mother of person", () => {
+			const actualPaternalAunt = family.getMaternalAuntOf("Shan");
+			const expectedPaternalAunt = [];
+			assert.deepStrictEqual(actualPaternalAunt, expectedPaternalAunt);
+		});
+
+		it("Should return empty list when person's mother's has no sister", () => {
+			const actualPaternalAunt = family.getMaternalAuntOf("Asva");
+			const expectedPaternalAunt = [];
+			assert.deepStrictEqual(actualPaternalAunt, expectedPaternalAunt);
+		});
+
+		it("Should return list when person's father's has brothers", () => {
+			const actualPaternalAunt = family.getMaternalAuntOf("Yodhan");
+			const expectedPaternalAunt = ["Tritha"];
+			assert.deepStrictEqual(actualPaternalAunt, expectedPaternalAunt);
+		});
+	});
 });

@@ -69,6 +69,11 @@ class Family {
 		const mother = this.family[name].mother;
 		return mother ? this.getBrothersOf(mother) : [];
 	}
+
+	getMaternalAuntOf(name) {
+		const mother = this.family[name].mother;
+		return mother ? this.getSistersOf(mother) : [];
+	}
 }
 
 module.exports = { Family };

@@ -89,15 +89,9 @@ describe("#Family", () => {
 			assert.deepStrictEqual(actualSon, expectedSon);
 		});
 
-		it("Should return 'NONE' if parent has no son", () => {
+		it("Should return empty list if parent has no son", () => {
 			const actualSon = family.getSonOf("Ish");
-			const expectedSon = ["NONE"];
-			assert.deepStrictEqual(actualSon, expectedSon);
-		});
-
-		it("Should return 'PERSON_NOT_FOUND' if parent doesn't exists in family", () => {
-			const actualSon = family.getSonOf("NotParent");
-			const expectedSon = "PERSON_NOT_FOUND";
+			const expectedSon = [];
 			assert.deepStrictEqual(actualSon, expectedSon);
 		});
 	});

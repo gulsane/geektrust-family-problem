@@ -29,13 +29,7 @@ class Family {
 
 	getSonOf(parentName) {
 		const children = this.getChildrenOf(parentName);
-		if (!children) return "PERSON_NOT_FOUND";
-
-		const son = children.filter(
-			(child) => this.family[child].gender === "Male"
-		);
-
-		return son[0] ? son : ["NONE"];
+		return children.filter((child) => this.family[child].gender === "Male");
 	}
 
 	getDaughterOf(parentName) {

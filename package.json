@@ -1,0 +1,27 @@
+{
+  "name": "geektrust-family-problem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gulsane/geektrust-family-problem.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gulsane/geektrust-family-problem/issues"
+  },
+  "homepage": "https://github.com/gulsane/geektrust-family-problem#readme",
+  "devDependencies": {
+    "mocha": "^8.3.0",
+    "nyc": "^15.1.0"
+  }
+}

@@ -21,8 +21,22 @@ describe("#Family", () => {
 			assert.isTrue(family.doesMemberExists("Shan"));
 		});
 
-		it("Should return false when family member exists", () => {
+		it("Should return false when family member doesn't exists", () => {
 			assert.isTrue(family.doesMemberExists("Shan"));
+		});
+	});
+
+	describe("getChildren", () => {
+		it("Should return children list when mother exists in family", () => {
+			const actualChildren = family.getChildren("Anga");
+			const expectedChildren = ["Chit", "Ish", "Vich", "Aras", "Satya"];
+			assert.deepStrictEqual(actualChildren, expectedChildren);
+		});
+
+		it("Should return failure message when mother doesn't exists in family", () => {
+			const actualChildren = family.getChildren("NotMother");
+			const expectedChildren = "PERSON_NOT_FOUND";
+			assert.deepStrictEqual(actualChildren, expectedChildren);
 		});
 	});
 });

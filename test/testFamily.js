@@ -26,19 +26,32 @@ describe("#Family", () => {
 		});
 	});
 
-	describe("getChildren", () => {
-		it("Should return children list when mother exists in family", () => {
-			const actualChildren = family.getChildren("Anga");
+	describe("getChildrenOf", () => {
+		it("Should return children list when existing mother name is provided", () => {
+			const actualChildren = family.getChildrenOf("Anga");
 			const expectedChildren = ["Chit", "Ish", "Vich", "Aras", "Satya"];
 			assert.deepStrictEqual(actualChildren, expectedChildren);
 		});
 
-		it("Should return failure message when mother doesn't exists in family", () => {
-			const actualChildren = family.getChildren("NotMother");
-			const expectedChildren = "PERSON_NOT_FOUND";
+		it("Should return children list when existing father name is provided", () => {
+			const actualChildren = family.getChildrenOf("Shan");
+			const expectedChildren = ["Chit", "Ish", "Vich", "Aras", "Satya"];
+			assert.deepStrictEqual(actualChildren, expectedChildren);
+		});
+
+		it("Should return null when parent name doesn't exists in family", () => {
+			const actualChildren = family.getChildrenOf("NotParent");
+			const expectedChildren = null;
+			assert.deepStrictEqual(actualChildren, expectedChildren);
+		});
+
+		it("Should return empty list when parent has no wife", () => {
+			const actualChildren = family.getChildrenOf("Ish");
+			const expectedChildren = [];
 			assert.deepStrictEqual(actualChildren, expectedChildren);
 		});
 	});
+
 	describe("getMother", () => {
 		it("Should return mother when mother exists in family", () => {
 			const actualMother = family.getMother("Anga");

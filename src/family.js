@@ -49,7 +49,7 @@ class Family {
 		return daughter[0] ? daughter : ["NONE"];
 	}
 
-	getSiblingOf(name) {
+	getSiblingsOf(name) {
 		const motherName = this.family[name].mother;
 		const children = motherName ? this.family[motherName].children : [];
 		return children.filter((child) => child !== name);

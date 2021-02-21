@@ -22,7 +22,7 @@ describe("#Family", () => {
 		});
 
 		it("Should return false when family member doesn't exists", () => {
-			assert.isTrue(family.doesMemberExists("Shan"));
+			assert.isFalse(family.doesMemberExists("NotMember"));
 		});
 	});
 
@@ -91,7 +91,7 @@ describe("#Family", () => {
 
 		it("Should return 'NONE' if parent has no son", () => {
 			const actualSon = family.getSonOf("Ish");
-			const expectedSon = "NONE";
+			const expectedSon = ["NONE"];
 			assert.deepStrictEqual(actualSon, expectedSon);
 		});
 
@@ -117,7 +117,7 @@ describe("#Family", () => {
 
 		it("Should return 'NONE' if parent has no Daughter", () => {
 			const actualDaughter = family.getDaughterOf("Ish");
-			const expectedDaughter = "NONE";
+			const expectedDaughter = ["NONE"];
 			assert.deepStrictEqual(actualDaughter, expectedDaughter);
 		});
 
@@ -125,6 +125,32 @@ describe("#Family", () => {
 			const actualDaughter = family.getDaughterOf("NotParent");
 			const expectedDaughter = "PERSON_NOT_FOUND";
 			assert.deepStrictEqual(actualDaughter, expectedDaughter);
+		});
+	});
+
+	describe("getSiblingOf", () => {
+		it("Should return [NONE] when there is no mother of person", () => {
+			const actualSibling = family.getSiblingOf("Shan");
+			const expectedSibling = ["NONE"];
+			assert.deepStrictEqual(actualSibling, expectedSibling);
+		});
+
+		it("Should return [NONE] the child is the only child of mother", () => {
+			const actualSibling = family.getSiblingOf("Yodhan");
+			const expectedSibling = ["NONE"];
+			assert.deepStrictEqual(actualSibling, expectedSibling);
+		});
+
+		it("Should return 'PERSON_NOT_FOUND' when person is not present in family", () => {
+			const actualSibling = family.getSiblingOf("Someone");
+			const expectedSibling = "PERSON_NOT_FOUND";
+			assert.deepStrictEqual(actualSibling, expectedSibling);
+		});
+
+		it("Should return list of siblings if there are siblings", () => {
+			const actualSibling = family.getSiblingOf("Vritha");
+			const expectedSibling = ["Dritha", "Tritha"];
+			assert.deepStrictEqual(actualSibling, expectedSibling);
 		});
 	});
 });

@@ -35,7 +35,7 @@ class Family {
 			(child) => this.family[child].gender === "Male"
 		);
 
-		return son[0] ? son : "NONE";
+		return son[0] ? son : ["NONE"];
 	}
 
 	getDaughterOf(parentName) {
@@ -46,7 +46,17 @@ class Family {
 			(child) => this.family[child].gender === "Female"
 		);
 
-		return daughter[0] ? daughter : "NONE";
+		return daughter[0] ? daughter : ["NONE"];
+	}
+
+	getSiblingOf(name) {
+		if (!this.doesMemberExists(name)) return "PERSON_NOT_FOUND";
+
+		const motherName = this.family[name].mother;
+		const children = motherName ? this.family[motherName].children : [];
+		const siblings = children.filter((child) => child !== name);
+
+		return siblings[0] ? siblings : ["NONE"];
 	}
 }
 

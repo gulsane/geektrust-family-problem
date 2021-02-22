@@ -44,15 +44,11 @@ class Family {
 	}
 
 	getBrothersOf(name) {
-		const siblings = this.getSiblingsOf(name);
-		return siblings.filter((sibling) => this.family[sibling].gender === "Male");
+		return this.getSiblingsOf(name, "Male");
 	}
 
 	getSistersOf(name) {
-		const siblings = this.getSiblingsOf(name);
-		return siblings.filter(
-			(sibling) => this.family[sibling].gender === "Female"
-		);
+		return this.getSiblingsOf(name, "Female");
 	}
 
 	getPaternalUncleOf(name) {

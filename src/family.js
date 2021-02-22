@@ -109,6 +109,25 @@ class Family {
 		const wifeOfSiblings = this.getSpouseOfSiblings(name, "Female");
 		return [...sistersOfSpouse, ...wifeOfSiblings];
 	}
+
+	addChild(motherName, childName, gender) {
+		if (!this.doesMemberExists(motherName)) {
+			return "PERSON_NOT_FOUND";
+		}
+
+		const mother = this.family[motherName];
+		if (!(mother.gender === "Female")) {
+			return "CHILD_ADDITION_FAILED";
+		}
+
+		mother.children.push(childName);
+		this.family[childName] = { gender, mother: motherName };
+
+		if (gender === "Female") {
+			this.family[childName].children = [];
+		}
+		return "CHILD_ADDITION_SUCCEEDED";
+	}
 }
 
 module.exports = { Family };

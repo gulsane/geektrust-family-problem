@@ -373,4 +373,32 @@ describe("#Family", () => {
 			assert.deepStrictEqual(actualSisterInLaw, expectedSisterInLaw);
 		});
 	});
+
+	describe("addChild", () => {
+		it("Should return person not found message if mother not exists in family", () => {
+			const actualMessage = family.addChild("NewMom", "NewChild", "Female");
+			const expectedMessage = "PERSON_NOT_FOUND";
+			assert.deepStrictEqual(actualMessage, expectedMessage);
+		});
+		it("Should return person child addition failure message if father name is given", () => {
+			const actualMessage = family.addChild("Shan", "NewChild", "Female");
+			const expectedMessage = "CHILD_ADDITION_FAILED";
+			assert.deepStrictEqual(actualMessage, expectedMessage);
+		});
+		it("Should return child addition success message when child is added", () => {
+			const actualMessage = family.addChild("Anga", "NewChild", "Female");
+			const expectedMessage = "CHILD_ADDITION_SUCCEEDED";
+			const actualChildren = family.getChildrenOf("Anga");
+			const expectedChildren = [
+				"Chit",
+				"Ish",
+				"Vich",
+				"Aras",
+				"Satya",
+				"NewChild",
+			];
+			assert.deepStrictEqual(actualChildren, expectedChildren);
+			assert.deepStrictEqual(actualMessage, expectedMessage);
+		});
+	});
 });

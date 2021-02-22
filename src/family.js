@@ -80,6 +80,29 @@ class Family {
 	getHusbandOf(name) {
 		return this.family[name].husband;
 	}
+
+	getSpouseOf(name) {
+		const person = this.family[name];
+		return person.gender === "Male" ? person.wife : person.husband;
+	}
+
+	getSiblingsOfSpouse(spouseName, siblingGender) {
+		const partner = this.getSpouseOf(spouseName);
+		return partner ? this.getSiblingsOf(partner, siblingGender) : [];
+	}
+
+	getSpouseOfSiblings(siblingName, spouseGender) {
+		const siblingGender = spouseGender === "Male" ? "Female" : "Male";
+		const siblings = this.getSiblingsOf(siblingName, siblingGender);
+		const spouses = siblings.map((sibling) => this.getSpouseOf(sibling));
+		return spouses.filter((spouse) => spouse);
+	}
+
+	getBrotherInLawOf(name) {
+		const brothersOfSpouse = this.getSiblingsOfSpouse(name, "Male");
+		const husbandOfSiblings = this.getSpouseOfSiblings(name, "Male");
+		return [...brothersOfSpouse, ...husbandOfSiblings];
+	}
 }
 
 module.exports = { Family };

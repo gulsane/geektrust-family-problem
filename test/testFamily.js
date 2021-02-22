@@ -279,4 +279,60 @@ describe("#Family", () => {
 			assert.isUndefined(actualWife);
 		});
 	});
+
+	describe("getSpouseOf", () => {
+		it("Should return husband name when partner is female", () => {
+			const actualSpouse = family.getSpouseOf("Anga");
+			const expectedSpouse = "Shan";
+			assert.deepStrictEqual(actualSpouse, expectedSpouse);
+		});
+
+		it("Should return undefined when female has no husband", () => {
+			const actualSpouse = family.getSpouseOf("Vila");
+			assert.isUndefined(actualSpouse);
+		});
+
+		it("Should return wife name when partner is male", () => {
+			const actualSpouse = family.getSpouseOf("Shan");
+			const expectedSpouse = "Anga";
+			assert.deepStrictEqual(actualSpouse, expectedSpouse);
+		});
+
+		it("Should return undefined when male has no wife", () => {
+			const actualSpouse = family.getSpouseOf("Ahit");
+			assert.isUndefined(actualSpouse);
+		});
+	});
+
+	describe("getBrotherInLawOf", () => {
+		it("Should return list of spouse's brother for male", () => {
+			const actualBrotherInLaw = family.getBrotherInLawOf("Vyan");
+			const expectedBrotherInLaw = ["Chit", "Ish", "Vich", "Aras"];
+			assert.deepStrictEqual(actualBrotherInLaw, expectedBrotherInLaw);
+		});
+
+		it("Should return list of spouse's brother for female", () => {
+			const actualBrotherInLaw = family.getBrotherInLawOf("Chitra");
+			const expectedBrotherInLaw = ["Chit", "Ish", "Vich"];
+			assert.deepStrictEqual(actualBrotherInLaw, expectedBrotherInLaw);
+		});
+
+		it("Should return list of siblings' husband for male", () => {
+			const actualBrotherInLaw = family.getBrotherInLawOf("Vritha");
+			const expectedBrotherInLaw = ["Jaya"];
+			assert.deepStrictEqual(actualBrotherInLaw, expectedBrotherInLaw);
+		});
+
+		it("Should return list of siblings' husband for female", () => {
+			const actualBrotherInLaw = family.getBrotherInLawOf("Tritha");
+			const expectedBrotherInLaw = ["Jaya"];
+			assert.deepStrictEqual(actualBrotherInLaw, expectedBrotherInLaw);
+		});
+
+		it("Should return empty list if female has no spouse and no siblings", () => {
+			const actualBrotherInLaw = family.getBrotherInLawOf("Yodhan");
+			const expectedBrotherInLaw = [];
+			assert.deepStrictEqual(actualBrotherInLaw, expectedBrotherInLaw);
+		});
+	});
 });

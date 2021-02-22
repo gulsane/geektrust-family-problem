@@ -73,14 +73,6 @@ class Family {
 		return mother ? this.getSistersOf(mother) : [];
 	}
 
-	getWifeOf(name) {
-		return this.family[name].wife;
-	}
-
-	getHusbandOf(name) {
-		return this.family[name].husband;
-	}
-
 	getSpouseOf(name) {
 		const person = this.family[name];
 		return person.gender === "Male" ? person.wife : person.husband;

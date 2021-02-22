@@ -249,4 +249,28 @@ describe("#Family", () => {
 			assert.deepStrictEqual(actualPaternalAunt, expectedPaternalAunt);
 		});
 	});
+
+	describe("getWifeOf", () => {
+		it("Should return wife name if a person has wife", () => {
+			const actualWife = family.getWifeOf("Shan");
+			assert.deepStrictEqual(actualWife, "Anga");
+		});
+
+		it("Should return undefined if a person has no wife", () => {
+			const actualWife = family.getWifeOf("Vritha");
+			assert.isUndefined(actualWife);
+		});
+	});
+
+	describe("getHusbandOf", () => {
+		it("Should return husband name if a person has husband", () => {
+			const actualHusband = family.getHusbandOf("Anga");
+			assert.deepStrictEqual(actualHusband, "Shan");
+		});
+
+		it("Should return undefined if a person has no wife", () => {
+			const actualWife = family.getHusbandOf("Chika");
+			assert.isUndefined(actualWife);
+		});
+	});
 });

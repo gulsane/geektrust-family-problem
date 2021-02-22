@@ -35,10 +35,12 @@ class Family {
 		return children.filter((child) => this.family[child].gender === "Female");
 	}
 
-	getSiblingsOf(name) {
+	getSiblingsOf(name, siblingGender) {
 		const motherName = this.family[name].mother;
 		const children = motherName ? this.family[motherName].children : [];
-		return children.filter((child) => child !== name);
+		return children.filter(
+			(child) => child !== name && this.family[child].gender === siblingGender
+		);
 	}
 
 	getBrothersOf(name) {

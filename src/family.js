@@ -3,10 +3,6 @@ class Family {
 		this.family = presetFamily;
 	}
 
-	get getFamily() {
-		return { ...this.family };
-	}
-
 	doesMemberExists(name) {
 		return this.family[name] !== undefined;
 	}

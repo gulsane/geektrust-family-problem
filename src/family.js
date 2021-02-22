@@ -7,14 +7,6 @@ class Family {
 		return this.family[name] !== undefined;
 	}
 
-	getMother(motherName) {
-		const mother = this.family[motherName];
-		if (!mother || mother.gender === "Male") {
-			return null;
-		}
-		return { ...mother };
-	}
-
 	getChildrenOf(parentName) {
 		const parent = this.family[parentName];
 		const motherName = parent.gender === "Female" ? parentName : parent.wife;

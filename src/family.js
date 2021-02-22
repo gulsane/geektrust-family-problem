@@ -103,6 +103,12 @@ class Family {
 		const husbandOfSiblings = this.getSpouseOfSiblings(name, "Male");
 		return [...brothersOfSpouse, ...husbandOfSiblings];
 	}
+
+	getSisterInLawOf(name) {
+		const sistersOfSpouse = this.getSiblingsOfSpouse(name, "Female");
+		const wifeOfSiblings = this.getSpouseOfSiblings(name, "Female");
+		return [...sistersOfSpouse, ...wifeOfSiblings];
+	}
 }
 
 module.exports = { Family };

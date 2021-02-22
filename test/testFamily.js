@@ -335,4 +335,42 @@ describe("#Family", () => {
 			assert.deepStrictEqual(actualBrotherInLaw, expectedBrotherInLaw);
 		});
 	});
+
+	describe("getSisterInLawOf", () => {
+		it("Should return list of spouse's sister for male", () => {
+			const actualSisterInLaw = family.getSisterInLawOf("Jaya");
+			const expectedSisterInLaw = ["Tritha"];
+			assert.deepStrictEqual(actualSisterInLaw, expectedSisterInLaw);
+		});
+
+		it("Should return list of spouse's sister for female", () => {
+			const actualSisterInLaw = family.getSisterInLawOf("Chitra");
+			const expectedSisterInLaw = ["Satya"];
+			assert.deepStrictEqual(actualSisterInLaw, expectedSisterInLaw);
+		});
+
+		it("Should return list of siblings' wife for male", () => {
+			const actualSisterInLaw = family.getSisterInLawOf("Chit");
+			const expectedSisterInLaw = ["Lika", "Chitra"];
+			assert.deepStrictEqual(actualSisterInLaw, expectedSisterInLaw);
+		});
+
+		it("Should return list of siblings' wife for female", () => {
+			const actualSisterInLaw = family.getSisterInLawOf("Satya");
+			const expectedSisterInLaw = ["Amba", "Lika", "Chitra"];
+			assert.deepStrictEqual(actualSisterInLaw, expectedSisterInLaw);
+		});
+
+		it("Should return empty list if male has no spouse and no siblings", () => {
+			const actualSisterInLaw = family.getSisterInLawOf("Yodhan");
+			const expectedSisterInLaw = [];
+			assert.deepStrictEqual(actualSisterInLaw, expectedSisterInLaw);
+		});
+
+		it("Should return empty list if female has no spouse and no siblings", () => {
+			const actualSisterInLaw = family.getSisterInLawOf("Chika");
+			const expectedSisterInLaw = [];
+			assert.deepStrictEqual(actualSisterInLaw, expectedSisterInLaw);
+		});
+	});
 });

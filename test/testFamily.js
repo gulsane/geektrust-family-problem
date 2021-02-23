@@ -326,7 +326,14 @@ describe("#Family", () => {
 			const expectedMessage = "CHILD_ADDITION_FAILED";
 			assert.deepStrictEqual(actualMessage, expectedMessage);
 		});
-		it("Should return child addition success message when child is added", () => {
+
+		it("Should return child addition failure message if child already exists in family", () => {
+			const actualMessage = family.addChild("Chitra", "Ahit", "Male");
+			const expectedMessage = "CHILD_ADDITION_FAILED";
+			assert.deepStrictEqual(actualMessage, expectedMessage);
+		});
+
+		it("Should return child addition success message when female child is added", () => {
 			const actualMessage = family.addChild("Anga", "NewChild", "Female");
 			const expectedMessage = "CHILD_ADDITION_SUCCEEDED";
 			const actualChildren = family.getChildrenOf("Anga");
@@ -337,6 +344,23 @@ describe("#Family", () => {
 				"Aras",
 				"Satya",
 				"NewChild",
+			];
+			assert.deepStrictEqual(actualChildren, expectedChildren);
+			assert.deepStrictEqual(actualMessage, expectedMessage);
+		});
+
+		it("Should return child addition success message when male child is added", () => {
+			const actualMessage = family.addChild("Anga", "SecondChild", "Male");
+			const expectedMessage = "CHILD_ADDITION_SUCCEEDED";
+			const actualChildren = family.getChildrenOf("Anga");
+			const expectedChildren = [
+				"Chit",
+				"Ish",
+				"Vich",
+				"Aras",
+				"Satya",
+				"NewChild",
+				"SecondChild",
 			];
 			assert.deepStrictEqual(actualChildren, expectedChildren);
 			assert.deepStrictEqual(actualMessage, expectedMessage);

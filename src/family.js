@@ -104,7 +104,7 @@ class Family {
 		}
 
 		const mother = this.family[motherName];
-		if (!(mother.gender === FEMALE)) {
+		if (!(mother.gender === FEMALE) || this.doesMemberExists(childName)) {
 			return CHILD_ADDITION_FAILED;
 		}
 

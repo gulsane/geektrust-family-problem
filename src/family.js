@@ -124,7 +124,7 @@ class Family {
 		if (!this.doesMemberExists(name)) {
 			return PERSON_NOT_FOUND;
 		}
-		const relation = relationship.replace(/_/g, "");
+		const relation = relationship.replace(/-/g, "");
 		const method = `get${relation}Of`;
 		const result = this[method](name);
 		return result.join(" ");

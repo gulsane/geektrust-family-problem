@@ -340,38 +340,38 @@ describe("#Family", () => {
 			assert.deepStrictEqual(actualOutput, expectedOutput);
 		});
 
-		it("Should give output for relationship 'Paternal_Uncle'", () => {
-			const actualOutput = family.getRelationship("Ahit", "Paternal_Uncle");
+		it("Should give output for relationship 'Paternal-Uncle'", () => {
+			const actualOutput = family.getRelationship("Ahit", "Paternal-Uncle");
 			const expectedOutput = "Chit Ish Vich";
 			assert.deepStrictEqual(actualOutput, expectedOutput);
 		});
 
-		it("Should give output for relationship 'Paternal_Aunt'", () => {
-			const actualOutput = family.getRelationship("Ahit", "Paternal_Aunt");
+		it("Should give output for relationship 'Paternal-Aunt'", () => {
+			const actualOutput = family.getRelationship("Ahit", "Paternal-Aunt");
 			const expectedOutput = "Satya";
 			assert.deepStrictEqual(actualOutput, expectedOutput);
 		});
 
-		it("Should give output for relationship 'Maternal_Uncle'", () => {
-			const actualOutput = family.getRelationship("Atya", "Maternal_Uncle");
+		it("Should give output for relationship 'Maternal-Uncle'", () => {
+			const actualOutput = family.getRelationship("Atya", "Maternal-Uncle");
 			const expectedOutput = "Chit Ish Vich Aras";
 			assert.deepStrictEqual(actualOutput, expectedOutput);
 		});
 
-		it("Should give output for relationship 'Maternal_Aunt'", () => {
-			const actualOutput = family.getRelationship("Yodhan", "Maternal_Aunt");
+		it("Should give output for relationship 'Maternal-Aunt'", () => {
+			const actualOutput = family.getRelationship("Yodhan", "Maternal-Aunt");
 			const expectedOutput = "Tritha";
 			assert.deepStrictEqual(actualOutput, expectedOutput);
 		});
 
-		it("Should give output for relationship 'Sister_In_Law'", () => {
-			const actualOutput = family.getRelationship("Satvy", "Sister_In_Law");
+		it("Should give output for relationship 'Sister-In-Law'", () => {
+			const actualOutput = family.getRelationship("Satvy", "Sister-In-Law");
 			const expectedOutput = "Atya";
 			assert.deepStrictEqual(actualOutput, expectedOutput);
 		});
 
-		it("Should give output for relationship 'Brother_In_Law'", () => {
-			const actualOutput = family.getRelationship("Satvy", "Brother_In_Law");
+		it("Should give output for relationship 'Brother-In-Law'", () => {
+			const actualOutput = family.getRelationship("Satvy", "Brother-In-Law");
 			const expectedOutput = "Vyas";
 			assert.deepStrictEqual(actualOutput, expectedOutput);
 		});

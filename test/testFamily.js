@@ -375,6 +375,12 @@ describe("#Family", () => {
 			const expectedOutput = "Vyas";
 			assert.deepStrictEqual(actualOutput, expectedOutput);
 		});
+
+		it("Should give output for relationship 'Siblings'", () => {
+			const actualOutput = family.getRelationship("Chit", "Siblings");
+			const expectedOutput = "Ish Vich Aras Satya";
+			assert.deepStrictEqual(actualOutput, expectedOutput);
+		});
 	});
 
 	describe("addChild", () => {

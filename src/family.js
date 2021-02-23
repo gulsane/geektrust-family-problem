@@ -109,12 +109,21 @@ class Family {
 		}
 
 		mother.children.push(childName);
-		this.family[childName] = { gender, mother: motherName };
-
+		this.family[childName] = { gender: gender, mother: motherName };
 		if (gender === FEMALE) {
 			this.family[childName].children = [];
 		}
 		return CHILD_ADDITION_SUCCEEDED;
+	}
+
+	getRelationship(name, relationship) {
+		if (!this.doesMemberExists(name)) {
+			return PERSON_NOT_FOUND;
+		}
+		const relation = relationship.replace(/_/g, "");
+		const method = `get${relation}Of`;
+		const result = this[method](name);
+		return result.join(" ");
 	}
 }
 

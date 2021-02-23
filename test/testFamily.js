@@ -3,7 +3,7 @@ const { Family } = require("../src/family");
 const presetFamily = require("../presetFamily.json");
 
 describe("#Family", () => {
-	const family = new Family(presetFamily);
+	const family = new Family(new Object({ ...presetFamily }));
 
 	describe("doesMemberExists", () => {
 		it("Should return true when family member exists", () => {
@@ -315,16 +315,74 @@ describe("#Family", () => {
 		});
 	});
 
+	describe("getRelationship", () => {
+		it("Should give person not found message when person don't exists", () => {
+			const actualOutput = family.getRelationship("Someone", "Daughter");
+			const expectedOutput = "PERSON_NOT_FOUND";
+			assert.deepStrictEqual(actualOutput, expectedOutput);
+		});
+
+		it("Should give output for relationship 'Daughter'", () => {
+			const actualOutput = family.getRelationship("Shan", "Daughter");
+			const expectedOutput = "Satya";
+			assert.deepStrictEqual(actualOutput, expectedOutput);
+		});
+
+		it("Should give output for relationship 'Son'", () => {
+			const actualOutput = family.getRelationship("Shan", "Son");
+			const expectedOutput = "Chit Ish Vich Aras";
+			assert.deepStrictEqual(actualOutput, expectedOutput);
+		});
+
+		it("Should give output for relationship 'Paternal_Uncle'", () => {
+			const actualOutput = family.getRelationship("Ahit", "Paternal_Uncle");
+			const expectedOutput = "Chit Ish Vich";
+			assert.deepStrictEqual(actualOutput, expectedOutput);
+		});
+
+		it("Should give output for relationship 'Paternal_Aunt'", () => {
+			const actualOutput = family.getRelationship("Ahit", "Paternal_Aunt");
+			const expectedOutput = "Satya";
+			assert.deepStrictEqual(actualOutput, expectedOutput);
+		});
+
+		it("Should give output for relationship 'Maternal_Uncle'", () => {
+			const actualOutput = family.getRelationship("Atya", "Maternal_Uncle");
+			const expectedOutput = "Chit Ish Vich Aras";
+			assert.deepStrictEqual(actualOutput, expectedOutput);
+		});
+
+		it("Should give output for relationship 'Maternal_Aunt'", () => {
+			const actualOutput = family.getRelationship("Yodhan", "Maternal_Aunt");
+			const expectedOutput = "Tritha";
+			assert.deepStrictEqual(actualOutput, expectedOutput);
+		});
+
+		it("Should give output for relationship 'Sister_In_Law'", () => {
+			const actualOutput = family.getRelationship("Satvy", "Sister_In_Law");
+			const expectedOutput = "Atya";
+			assert.deepStrictEqual(actualOutput, expectedOutput);
+		});
+
+		it("Should give output for relationship 'Brother_In_Law'", () => {
+			const actualOutput = family.getRelationship("Satvy", "Brother_In_Law");
+			const expectedOutput = "Vyas";
+			assert.deepStrictEqual(actualOutput, expectedOutput);
+		});
+	});
+
 	describe("addChild", () => {
 		it("Should return person not found message if mother not exists in family", () => {
 			const actualMessage = family.addChild("NewMom", "NewChild", "Female");
 			const expectedMessage = "PERSON_NOT_FOUND";
 			assert.deepStrictEqual(actualMessage, expectedMessage);
+			assert.isFalse(family.doesMemberExists("NewChild"));
 		});
 		it("Should return person child addition failure message if father name is given", () => {
 			const actualMessage = family.addChild("Shan", "NewChild", "Female");
 			const expectedMessage = "CHILD_ADDITION_FAILED";
 			assert.deepStrictEqual(actualMessage, expectedMessage);
+			assert.isFalse(family.doesMemberExists("NewChild"));
 		});
 
 		it("Should return child addition failure message if child already exists in family", () => {
@@ -347,6 +405,7 @@ describe("#Family", () => {
 			];
 			assert.deepStrictEqual(actualChildren, expectedChildren);
 			assert.deepStrictEqual(actualMessage, expectedMessage);
+			assert.isTrue(family.doesMemberExists("NewChild"));
 		});
 
 		it("Should return child addition success message when male child is added", () => {
@@ -364,6 +423,7 @@ describe("#Family", () => {
 			];
 			assert.deepStrictEqual(actualChildren, expectedChildren);
 			assert.deepStrictEqual(actualMessage, expectedMessage);
+			assert.isTrue(family.doesMemberExists("SecondChild"));
 		});
 	});
 });

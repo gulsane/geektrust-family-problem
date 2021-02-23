@@ -1,6 +1,7 @@
 const {
 	MALE,
 	FEMALE,
+	NONE,
 	PERSON_NOT_FOUND,
 	CHILD_ADDITION_FAILED,
 	CHILD_ADDITION_SUCCEEDED,
@@ -126,7 +127,8 @@ class Family {
 		}
 		const relation = relationship.replace(/-/g, "");
 		const method = `get${relation}Of`;
-		const result = this[method](name);
+		let result = this[method](name);
+		result = result[0] ? result : [NONE];
 		return result.join(" ");
 	}
 }

@@ -328,6 +328,12 @@ describe("#Family", () => {
 			assert.deepStrictEqual(actualOutput, expectedOutput);
 		});
 
+		it("Should give NONE when no person in relation found", () => {
+			const actualOutput = family.getRelationship("Lika", "Son");
+			const expectedOutput = "NONE";
+			assert.deepStrictEqual(actualOutput, expectedOutput);
+		});
+
 		it("Should give output for relationship 'Daughter'", () => {
 			const actualOutput = family.getRelationship("Shan", "Daughter");
 			const expectedOutput = "Satya";

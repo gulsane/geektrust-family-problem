@@ -1,3 +1,11 @@
+const {
+	MALE,
+	FEMALE,
+	PERSON_NOT_FOUND,
+	CHILD_ADDITION_FAILED,
+	CHILD_ADDITION_SUCCEEDED,
+} = require("./constants");
+
 class Family {
 	constructor(presetFamily = {}) {
 		this.family = presetFamily;
@@ -9,18 +17,18 @@ class Family {
 
 	getChildrenOf(parentName) {
 		const parent = this.family[parentName];
-		const motherName = parent.gender === "Female" ? parentName : parent.wife;
+		const motherName = parent.gender === FEMALE ? parentName : parent.wife;
 		return motherName ? this.family[motherName].children : [];
 	}
 
 	getSonOf(parentName) {
 		const children = this.getChildrenOf(parentName);
-		return children.filter((child) => this.family[child].gender === "Male");
+		return children.filter((child) => this.family[child].gender === MALE);
 	}
 
 	getDaughterOf(parentName) {
 		const children = this.getChildrenOf(parentName);
-		return children.filter((child) => this.family[child].gender === "Female");
+		return children.filter((child) => this.family[child].gender === FEMALE);
 	}
 
 	getSiblingsOf(name, siblingGender) {
@@ -32,11 +40,11 @@ class Family {
 	}
 
 	getBrothersOf(name) {
-		return this.getSiblingsOf(name, "Male");
+		return this.getSiblingsOf(name, MALE);
 	}
 
 	getSistersOf(name) {
-		return this.getSiblingsOf(name, "Female");
+		return this.getSiblingsOf(name, FEMALE);
 	}
 
 	getPaternalUncleOf(name) {
@@ -63,7 +71,7 @@ class Family {
 
 	getSpouseOf(name) {
 		const person = this.family[name];
-		return person.gender === "Male" ? person.wife : person.husband;
+		return person.gender === MALE ? person.wife : person.husband;
 	}
 
 	getSiblingsOfSpouse(spouseName, siblingGender) {
@@ -72,41 +80,41 @@ class Family {
 	}
 
 	getSpouseOfSiblings(siblingName, spouseGender) {
-		const siblingGender = spouseGender === "Male" ? "Female" : "Male";
+		const siblingGender = spouseGender === MALE ? FEMALE : MALE;
 		const siblings = this.getSiblingsOf(siblingName, siblingGender);
 		const spouses = siblings.map((sibling) => this.getSpouseOf(sibling));
 		return spouses.filter((spouse) => spouse);
 	}
 
 	getBrotherInLawOf(name) {
-		const brothersOfSpouse = this.getSiblingsOfSpouse(name, "Male");
-		const husbandOfSiblings = this.getSpouseOfSiblings(name, "Male");
+		const brothersOfSpouse = this.getSiblingsOfSpouse(name, MALE);
+		const husbandOfSiblings = this.getSpouseOfSiblings(name, MALE);
 		return [...brothersOfSpouse, ...husbandOfSiblings];
 	}
 
 	getSisterInLawOf(name) {
-		const sistersOfSpouse = this.getSiblingsOfSpouse(name, "Female");
-		const wifeOfSiblings = this.getSpouseOfSiblings(name, "Female");
+		const sistersOfSpouse = this.getSiblingsOfSpouse(name, FEMALE);
+		const wifeOfSiblings = this.getSpouseOfSiblings(name, FEMALE);
 		return [...sistersOfSpouse, ...wifeOfSiblings];
 	}
 
 	addChild(motherName, childName, gender) {
 		if (!this.doesMemberExists(motherName)) {
-			return "PERSON_NOT_FOUND";
+			return PERSON_NOT_FOUND;
 		}
 
 		const mother = this.family[motherName];
-		if (!(mother.gender === "Female")) {
-			return "CHILD_ADDITION_FAILED";
+		if (!(mother.gender === FEMALE)) {
+			return CHILD_ADDITION_FAILED;
 		}
 
 		mother.children.push(childName);
 		this.family[childName] = { gender, mother: motherName };
 
-		if (gender === "Female") {
+		if (gender === FEMALE) {
 			this.family[childName].children = [];
 		}
-		return "CHILD_ADDITION_SUCCEEDED";
+		return CHILD_ADDITION_SUCCEEDED;
 	}
 }
 

@@ -76,6 +76,12 @@ describe("#Family", () => {
 	});
 
 	describe("getSiblingsOf", () => {
+		it("Should return brothers and sisters if sibling gender is not defined", () => {
+			const actualSibling = family.getSiblingsOf("Dritha");
+			const expectedSibling = ["Tritha", "Vritha"];
+			assert.deepStrictEqual(actualSibling, expectedSibling);
+		});
+
 		it("Should return empty list when there is no mother of person", () => {
 			const actualSibling = family.getSiblingsOf("Shan", "Male");
 			const expectedSibling = [];

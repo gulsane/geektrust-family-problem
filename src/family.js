@@ -34,9 +34,13 @@ class Family {
 	getSiblingsOf(name, siblingGender) {
 		const motherName = this.family[name].mother;
 		const children = motherName ? this.family[motherName].children : [];
-		return children.filter(
-			(child) => child !== name && this.family[child].gender === siblingGender
-		);
+		let sibling = children.filter((child) => child !== name);
+		if (siblingGender) {
+			sibling = sibling.filter(
+				(child) => this.family[child].gender === siblingGender
+			);
+		}
+		return sibling;
 	}
 
 	getBrothersOf(name) {

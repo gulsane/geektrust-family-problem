@@ -1,12 +1,13 @@
 {
 	"name": "geektrust-family-problem",
 	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
+	"description": "Family Problem",
+	"main": "geektrust.js",
 	"directories": {
 		"test": "test"
 	},
 	"scripts": {
+		"start": "node geektrust.js",
 		"test": "nyc mocha"
 	},
 	"repository": {
@@ -21,10 +22,8 @@
 	},
 	"homepage": "https://github.com/gulsane/geektrust-family-problem#readme",
 	"devDependencies": {
+		"chai": "^4.3.0",
 		"mocha": "^8.3.0",
 		"nyc": "^15.1.0"
-	},
-	"dependencies": {
-		"chai": "^4.3.0"
 	}
 }

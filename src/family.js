@@ -66,9 +66,7 @@ class Family {
 	}
 
 	getPaternalAuntOf(name) {
-		const mother = this.family[name].mother;
-		const father = mother ? this.family[mother].husband : undefined;
-		return father ? this.getSistersOf(father) : [];
+		return this.getPaternalRelation(name, FEMALE);
 	}
 
 	getMaternalUncleOf(name) {

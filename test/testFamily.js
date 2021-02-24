@@ -101,46 +101,6 @@ describe("#Family", () => {
 		});
 	});
 
-	describe("getBrothersOf", () => {
-		it("Should return empty list when there is no mother of person", () => {
-			const actualBrothers = family.getBrothersOf("Shan");
-			const expectedBrothers = [];
-			assert.deepStrictEqual(actualBrothers, expectedBrothers);
-		});
-
-		it("Should return empty list when the child is the only child of mother", () => {
-			const actualBrothers = family.getBrothersOf("Yodhan");
-			const expectedBrothers = [];
-			assert.deepStrictEqual(actualBrothers, expectedBrothers);
-		});
-
-		it("Should return list of brothers if there are brothers", () => {
-			const actualBrothers = family.getBrothersOf("Vyas");
-			const expectedBrothers = ["Asva"];
-			assert.deepStrictEqual(actualBrothers, expectedBrothers);
-		});
-	});
-
-	describe("getSistersOf", () => {
-		it("Should return empty list when there is no mother of person", () => {
-			const actualSisters = family.getSistersOf("Shan");
-			const expectedSisters = [];
-			assert.deepStrictEqual(actualSisters, expectedSisters);
-		});
-
-		it("Should return empty list when the child is the only child of mother", () => {
-			const actualSisters = family.getSistersOf("Yodhan");
-			const expectedSisters = [];
-			assert.deepStrictEqual(actualSisters, expectedSisters);
-		});
-
-		it("Should return list of Sisterss if there are sisters", () => {
-			const actualSisters = family.getSistersOf("Ahit");
-			const expectedSisters = ["Jnki"];
-			assert.deepStrictEqual(actualSisters, expectedSisters);
-		});
-	});
-
 	describe("getPaternalUncleOf", () => {
 		it("Should return empty list when there is no father of person", () => {
 			const actualPaternalUncle = family.getPaternalUncleOf("Shan");

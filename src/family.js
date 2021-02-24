@@ -85,10 +85,10 @@ class Family {
 	}
 
 	getSpouseOfSiblings(siblingName, spouseGender) {
-		const siblingGender = spouseGender === MALE ? FEMALE : MALE;
-		const siblings = this.getSiblingsOf(siblingName, siblingGender);
+		const siblings = this.getSiblingsOf(siblingName);
 		const spouses = siblings.map((sibling) => this.getSpouseOf(sibling));
-		return spouses.filter((spouse) => spouse);
+		const validSpouses = spouses.filter((spouse) => spouse);
+		return this.filterChildren(validSpouses, spouseGender);
 	}
 
 	getBrotherInLawOf(name) {

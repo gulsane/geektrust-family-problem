@@ -1,0 +1,4 @@
+node geektrust.js ./inputResource/customInputForFailureGetRelationship.txt
+PERSON_NOT_FOUND
+NONE
+Chit Vich Aras Satya

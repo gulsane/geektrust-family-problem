@@ -1,0 +1,4 @@
+ADD_CHILD Someone NewChild Female
+ADD_CHILD Shan NewChild Female
+ADD_CHILD Anga Chit Female
+ADD_CHILD Anga NewChild Female

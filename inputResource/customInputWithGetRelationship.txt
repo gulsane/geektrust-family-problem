@@ -1,0 +1,10 @@
+GET_RELATIONSHIP Shan Daughter
+GET_RELATIONSHIP Shan Son
+GET_RELATIONSHIP Jaya Siblings
+GET_RELATIONSHIP Dritha Siblings
+GET_RELATIONSHIP Satvy Brother-In-Law
+GET_RELATIONSHIP Satvy Sister-In-Law
+GET_RELATIONSHIP Yodhan Maternal-Uncle
+GET_RELATIONSHIP Yodhan Maternal-Aunt
+GET_RELATIONSHIP Tritha Paternal-Uncle
+GET_RELATIONSHIP Tritha Paternal-Aunt

@@ -24,13 +24,11 @@ class Family {
 	}
 
 	getSonOf(parentName) {
-		const children = this.getChildrenOf(parentName);
-		return children.filter((child) => this.family[child].gender === MALE);
+		return this.getChildrenOf(parentName, MALE);
 	}
 
 	getDaughterOf(parentName) {
-		const children = this.getChildrenOf(parentName);
-		return children.filter((child) => this.family[child].gender === FEMALE);
+		return this.getChildrenOf(parentName, FEMALE);
 	}
 
 	getSiblingsOf(name, siblingGender) {

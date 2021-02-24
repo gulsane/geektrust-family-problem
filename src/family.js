@@ -80,7 +80,8 @@ class Family {
 
 	getSiblingsOfSpouse(spouseName, siblingGender) {
 		const partner = this.getSpouseOf(spouseName);
-		return partner ? this.getSiblingsOf(partner, siblingGender) : [];
+		const siblings = partner ? this.getSiblingsOf(partner) : [];
+		return this.filterChildren(siblings, siblingGender);
 	}
 
 	getSpouseOfSiblings(siblingName, spouseGender) {

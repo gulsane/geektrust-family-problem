@@ -32,12 +32,12 @@ describe("#processCommands", () => {
 			assert.deepStrictEqual(actualOutput, expectedOutput);
 		});
 
-		it("Should return 'OPERATION_NOT_FOUND' when operation not matched", () => {
+		it("Should return undefined when operation not matched", () => {
 			const family = new Family({});
 			const operation = "WRONG_OPERATION";
 			const args = "Someone AgainSomeone Male";
 			const actualOutput = performOperation(family, operation, args);
-			const expectedOutput = "OPERATION_NOT_FOUND";
+			const expectedOutput = undefined;
 			assert.deepStrictEqual(actualOutput, expectedOutput);
 		});
 	});

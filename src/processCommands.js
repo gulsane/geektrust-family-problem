@@ -9,7 +9,7 @@ const performOperation = function (family, operation, args) {
 		case GET_RELATIONSHIP:
 			return family.getRelationship(...args);
 		default:
-			return "OPERATION_NOT_FOUND";
+			return;
 	}
 };
 

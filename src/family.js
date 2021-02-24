@@ -16,10 +16,11 @@ class Family {
 		return this.family[name] !== undefined;
 	}
 
-	getChildrenOf(parentName) {
-		const parent = this.family[parentName];
-		const motherName = parent.gender === FEMALE ? parentName : parent.wife;
-		return motherName ? this.family[motherName].children : [];
+	getChildrenOf(name, gender) {
+		const parent = this.family[name];
+		const mother = parent && parent.gender === MALE ? parent.wife : name;
+		const children = mother ? this.family[mother].children : [];
+		return children.filter((child) => this.family[child].gender === gender);
 	}
 
 	getSonOf(parentName) {
@@ -34,7 +35,7 @@ class Family {
 
 	getSiblingsOf(name, siblingGender) {
 		const motherName = this.family[name].mother;
-		const children = motherName ? this.family[motherName].children : [];
+		const children = this.getChildrenOf(motherName);
 		let sibling = children.filter((child) => child !== name);
 		if (siblingGender) {
 			sibling = sibling.filter(

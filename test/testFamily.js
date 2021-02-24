@@ -17,19 +17,19 @@ describe("#Family", () => {
 
 	describe("getChildrenOf", () => {
 		it("Should return children list when existing mother name is provided", () => {
-			const actualChildren = family.getChildrenOf("Anga");
-			const expectedChildren = ["Chit", "Ish", "Vich", "Aras", "Satya"];
+			const actualChildren = family.getChildrenOf("Anga", "Male");
+			const expectedChildren = ["Chit", "Ish", "Vich", "Aras"];
 			assert.deepStrictEqual(actualChildren, expectedChildren);
 		});
 
 		it("Should return children list when existing father name is provided", () => {
-			const actualChildren = family.getChildrenOf("Shan");
-			const expectedChildren = ["Chit", "Ish", "Vich", "Aras", "Satya"];
+			const actualChildren = family.getChildrenOf("Shan", "Female");
+			const expectedChildren = ["Satya"];
 			assert.deepStrictEqual(actualChildren, expectedChildren);
 		});
 
 		it("Should return empty list when parent has no wife", () => {
-			const actualChildren = family.getChildrenOf("Ish");
+			const actualChildren = family.getChildrenOf("Ish", "Male");
 			const expectedChildren = [];
 			assert.deepStrictEqual(actualChildren, expectedChildren);
 		});

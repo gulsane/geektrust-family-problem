@@ -82,33 +82,21 @@ describe("#Family", () => {
 	});
 
 	describe("getSiblingsOf", () => {
-		it("Should return brothers and sisters if sibling gender is not defined", () => {
+		it("Should return siblings if siblings present in family tree", () => {
 			const actualSibling = family.getSiblingsOf("Dritha");
 			const expectedSibling = ["Tritha", "Vritha"];
 			assert.deepStrictEqual(actualSibling, expectedSibling);
 		});
 
 		it("Should return empty list when there is no mother of person", () => {
-			const actualSibling = family.getSiblingsOf("Shan", "Male");
+			const actualSibling = family.getSiblingsOf("Shan");
 			const expectedSibling = [];
 			assert.deepStrictEqual(actualSibling, expectedSibling);
 		});
 
 		it("Should return empty list when the child is the only child of mother", () => {
-			const actualSibling = family.getSiblingsOf("Yodhan", "Male");
+			const actualSibling = family.getSiblingsOf("Yodhan");
 			const expectedSibling = [];
-			assert.deepStrictEqual(actualSibling, expectedSibling);
-		});
-
-		it("Should return list of female siblings if there are female siblings", () => {
-			const actualSibling = family.getSiblingsOf("Vritha", "Female");
-			const expectedSibling = ["Dritha", "Tritha"];
-			assert.deepStrictEqual(actualSibling, expectedSibling);
-		});
-
-		it("Should return list of male siblings if there are male siblings", () => {
-			const actualSibling = family.getSiblingsOf("Asva", "Male");
-			const expectedSibling = ["Vyas"];
 			assert.deepStrictEqual(actualSibling, expectedSibling);
 		});
 	});

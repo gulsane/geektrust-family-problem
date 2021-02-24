@@ -28,6 +28,12 @@ describe("#Family", () => {
 			assert.deepStrictEqual(actualChildren, expectedChildren);
 		});
 
+		it("Should return full children list when gender is not provided", () => {
+			const actualChildren = family.getChildrenOf("Shan");
+			const expectedChildren = ["Chit", "Ish", "Vich", "Aras", "Satya"];
+			assert.deepStrictEqual(actualChildren, expectedChildren);
+		});
+
 		it("Should return empty list when parent has no wife", () => {
 			const actualChildren = family.getChildrenOf("Ish", "Male");
 			const expectedChildren = [];

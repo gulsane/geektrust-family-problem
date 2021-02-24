@@ -45,17 +45,24 @@ class Family {
 	}
 
 	getBrothersOf(name) {
+		const mother = this.family[name].mother;
 		return this.getSiblingsOf(name, MALE);
 	}
 
 	getSistersOf(name) {
+		const mother = this.family[name].mother;
 		return this.getSiblingsOf(name, FEMALE);
 	}
 
-	getPaternalUncleOf(name) {
+	getPaternalRelation(name, gender) {
 		const mother = this.family[name].mother;
 		const father = mother ? this.family[mother].husband : undefined;
-		return father ? this.getBrothersOf(father) : [];
+		const siblings = father ? this.getSiblingsOf(father) : [];
+		return this.filterChildren(siblings, gender);
+	}
+
+	getPaternalUncleOf(name) {
+		return this.getPaternalRelation(name, MALE);
 	}
 
 	getPaternalAuntOf(name) {
